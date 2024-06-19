@@ -6,11 +6,12 @@ import {
 	StyledLabelDate
 } from './input-date.styles';
 
-const InputDate = ({ cardData, setCardData, register, errors }) => {
+const InputDate = ({ cardData, setCardData, register, errors, isDirty }) => {
 	return (
 		<StyledInputDateContainer>
 			<StyledLabelDate htmlFor='month'>EXP. DATE MM/YY</StyledLabelDate>
 			<StyledInputDate
+				$isDirty={isDirty || errors?.name?.type === 'required'}
 				onInput={({ target }) =>
 					setCardData({ ...cardData, month: target.value })
 				}
@@ -20,6 +21,7 @@ const InputDate = ({ cardData, setCardData, register, errors }) => {
 				{...register('month', FORM_VALIDATION.MONTH)}
 			/>
 			<StyledInputDate
+				$isDirty={isDirty || errors?.name?.type === 'required'}
 				onInput={({ target }) =>
 					setCardData({ ...cardData, year: target.value })
 				}
@@ -28,7 +30,9 @@ const InputDate = ({ cardData, setCardData, register, errors }) => {
 				placeholder='YY'
 				{...register('year', FORM_VALIDATION.YEAR)}
 			/>
-			<StyledError>{errors?.name?.message}</StyledError>
+			<StyledError>
+				{errors?.month?.message || errors?.year?.message}
+			</StyledError>
 		</StyledInputDateContainer>
 	);
 };

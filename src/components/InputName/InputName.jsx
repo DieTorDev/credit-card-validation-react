@@ -6,11 +6,14 @@ import {
 	StyledLabel
 } from './input-name.styles';
 
-const InputName = ({ cardData, setCardData, register, errors }) => {
+const InputName = ({ cardData, setCardData, register, errors, isDirty }) => {
+	console.log(errors);
+
 	return (
 		<StyledInputNameContainer>
 			<StyledLabel htmlFor='name'>CARDHOLDER NAME</StyledLabel>
 			<StyledInput
+				$isDirty={isDirty || errors?.name?.type === 'pattern'}
 				onInput={({ target }) =>
 					setCardData({ ...cardData, name: target.value })
 				}

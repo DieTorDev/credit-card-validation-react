@@ -19,7 +19,7 @@ const StyledInput = styled.input`
 	padding-left: 16px;
 	font-size: 18px;
 	font-weight: 500px;
-	border: 2px solid #dfdee0;
+	border: 2px solid ${({ $isDirty }) => ($isDirty ? '#FF5050' : '#dfdee0')};
 	border-radius: 8px;
 	font-family: 'Space Grotesk', sans-serif;
 	color: #21092f;

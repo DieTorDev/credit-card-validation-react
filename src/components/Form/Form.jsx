@@ -11,10 +11,10 @@ const Form = ({ cardData, setCardData }) => {
 	const {
 		handleSubmit,
 		register,
-		formState: { errors }
+		formState: { errors, isDirty }
 	} = useForm(FORM_VALIDATION);
 
-	console.log(errors);
+	console.log(isDirty);
 
 	return (
 		<StyledForm onSubmit={handleSubmit(onSubmit)}>
@@ -23,6 +23,7 @@ const Form = ({ cardData, setCardData }) => {
 				setCardData={setCardData}
 				register={register}
 				errors={errors}
+				isDirty={isDirty}
 			/>
 			<InputNumber
 				cardData={cardData}

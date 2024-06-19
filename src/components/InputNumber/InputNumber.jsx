@@ -6,11 +6,12 @@ import {
 	StyledLabelNumber
 } from './input-number.styles';
 
-const InputNumber = ({ cardData, setCardData, register, errors }) => {
+const InputNumber = ({ cardData, setCardData, register, errors, isDirty }) => {
 	return (
 		<StyledInputNumberContainer>
 			<StyledLabelNumber htmlFor='number'>CARD NUMBER</StyledLabelNumber>
 			<StyledInputNumber
+				$isDirty={isDirty || errors?.name?.type === 'pattern'}
 				onInput={({ target }) =>
 					setCardData({ ...cardData, number: target.value })
 				}
@@ -19,7 +20,7 @@ const InputNumber = ({ cardData, setCardData, register, errors }) => {
 				placeholder='e.g. 1234 5678 9123 0000'
 				{...register('number', FORM_VALIDATION.NUMBER)}
 			/>
-			<StyledError>{errors?.name?.message}</StyledError>
+			<StyledError>{errors?.number?.message}</StyledError>
 		</StyledInputNumberContainer>
 	);
 };
