@@ -11,7 +11,7 @@ const InputDate = ({ cardData, setCardData, register, errors, isDirty }) => {
 		<StyledInputDateContainer>
 			<StyledLabelDate htmlFor='month'>EXP. DATE MM/YY</StyledLabelDate>
 			<StyledInputDate
-				$isDirty={isDirty || errors?.name?.type === 'required'}
+				$isWrong={isDirty || Object.keys(errors).length !== 0}
 				onInput={({ target }) =>
 					setCardData({ ...cardData, month: target.value })
 				}
@@ -21,7 +21,7 @@ const InputDate = ({ cardData, setCardData, register, errors, isDirty }) => {
 				{...register('month', FORM_VALIDATION.MONTH)}
 			/>
 			<StyledInputDate
-				$isDirty={isDirty || errors?.name?.type === 'required'}
+				$isWrong={isDirty || Object.keys(errors).length !== 0}
 				onInput={({ target }) =>
 					setCardData({ ...cardData, year: target.value })
 				}

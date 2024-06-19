@@ -11,7 +11,7 @@ const InputCvc = ({ cardData, setCardData, register, errors, isDirty }) => {
 		<StyledInputCvcContainer>
 			<StyledLabelCvc htmlFor='cvc'>CVC</StyledLabelCvc>
 			<StyledInputCvc
-				$isDirty={isDirty || errors?.name?.type === 'required'}
+				$isWrong={isDirty || Object.keys(errors).length !== 0}
 				onInput={({ target }) =>
 					setCardData({ ...cardData, cvc: target.value })
 				}

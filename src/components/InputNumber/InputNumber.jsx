@@ -11,11 +11,10 @@ const InputNumber = ({ cardData, setCardData, register, errors, isDirty }) => {
 		<StyledInputNumberContainer>
 			<StyledLabelNumber htmlFor='number'>CARD NUMBER</StyledLabelNumber>
 			<StyledInputNumber
-				$isDirty={isDirty || errors?.name?.type === 'pattern'}
+				$isWrong={isDirty || Object.keys(errors).length !== 0}
 				onInput={({ target }) =>
-					setCardData({ ...cardData, number: target.value })
+					handleInputNumber(target, cardData, setCardData)
 				}
-				maxLength={16}
 				type='text'
 				placeholder='e.g. 1234 5678 9123 0000'
 				{...register('number', FORM_VALIDATION.NUMBER)}
@@ -23,6 +22,12 @@ const InputNumber = ({ cardData, setCardData, register, errors, isDirty }) => {
 			<StyledError>{errors?.number?.message}</StyledError>
 		</StyledInputNumberContainer>
 	);
+};
+
+const handleInputNumber = (input, cardData, setCardData) => {
+	if (input.value.length > 15) {
+		input.value.substring(0, input.value.length - 2);
+	} else setCardData({ ...cardData, number: input.value });
 };
 
 export default InputNumber;

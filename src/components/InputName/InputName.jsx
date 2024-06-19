@@ -11,7 +11,7 @@ const InputName = ({ cardData, setCardData, register, errors, isDirty }) => {
 		<StyledInputNameContainer>
 			<StyledLabel htmlFor='name'>CARDHOLDER NAME</StyledLabel>
 			<StyledInput
-				$isDirty={isDirty || errors?.name?.type === 'pattern'}
+				$isWrong={isDirty || Object.keys(errors).length !== 0}
 				onInput={({ target }) =>
 					setCardData({ ...cardData, name: target.value })
 				}

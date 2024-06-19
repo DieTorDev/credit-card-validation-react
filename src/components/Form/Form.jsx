@@ -5,14 +5,13 @@ import InputDate from '../InputDate/InputDate';
 import InputName from '../InputName/InputName';
 import InputNumber from '../InputNumber/InputNumber';
 import { StyledForm, StyledFormSection } from './form.styles';
-import { FORM_VALIDATION } from '../../constants/validation-data';
 
 const Form = ({ cardData, setCardData }) => {
 	const {
 		handleSubmit,
 		register,
 		formState: { errors, isDirty }
-	} = useForm(FORM_VALIDATION);
+	} = useForm({ mode: 'onChange' });
 
 	return (
 		<StyledForm onSubmit={handleSubmit(onSubmit)}>

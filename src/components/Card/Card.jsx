@@ -1,3 +1,4 @@
+import { CARD_DATA } from '../../constants/card-data';
 import {
 	StyledBackCard,
 	StyledCard,
@@ -13,15 +14,20 @@ const Card = ({ cardData }) => {
 	return (
 		<StyledCard>
 			<StyledBackCard>
-				<StyledCardCvc>{cvc}</StyledCardCvc>
+				<StyledCardCvc>{cvc === '' ? CARD_DATA.cvc : cvc}</StyledCardCvc>
 			</StyledBackCard>
 			<StyledFrontCard>
 				<img src='/images/card-logo.svg' alt='' />
-				<StyledCardNumber>{number}</StyledCardNumber>
+				<StyledCardNumber>
+					{number === '' ? CARD_DATA.number : number}
+				</StyledCardNumber>
 				<StyledCardData>
-					<span>{name.toUpperCase()}</span>
 					<span>
-						{month}/{year}
+						{name === '' ? CARD_DATA.name.toUpperCase() : name.toUpperCase()}
+					</span>
+					<span>
+						{month === '' ? CARD_DATA.month : month}/
+						{year === '' ? CARD_DATA.year : year}
 					</span>
 				</StyledCardData>
 			</StyledFrontCard>

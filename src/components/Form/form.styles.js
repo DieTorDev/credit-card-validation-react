@@ -17,6 +17,7 @@ const StyledError = styled.span`
 	color: #ff5050;
 	position: absolute;
 	bottom: -25px;
+	font-size: 12px;
 `;
 
 export { StyledForm, StyledFormSection, StyledError };
