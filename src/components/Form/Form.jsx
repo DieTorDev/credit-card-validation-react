@@ -14,8 +14,6 @@ const Form = ({ cardData, setCardData }) => {
 		formState: { errors, isDirty }
 	} = useForm(FORM_VALIDATION);
 
-	console.log(isDirty);
-
 	return (
 		<StyledForm onSubmit={handleSubmit(onSubmit)}>
 			<InputName

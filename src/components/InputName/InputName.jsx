@@ -7,8 +7,6 @@ import {
 } from './input-name.styles';
 
 const InputName = ({ cardData, setCardData, register, errors, isDirty }) => {
-	console.log(errors);
-
 	return (
 		<StyledInputNameContainer>
 			<StyledLabel htmlFor='name'>CARDHOLDER NAME</StyledLabel>
